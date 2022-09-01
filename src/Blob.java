@@ -1,6 +1,8 @@
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,10 +13,11 @@ public class Blob {
 
 	private String SHA1;
 	
-	public Blob(String fileName) {
+	public Blob(String fileName) throws FileNotFoundException {
 		SHA1 = encryptThisString(fileName);
 		
 		File file = new File(SHA1);	
+		PrintWriter pw = new PrintWriter(file);
 	}
 	
 	private static String getFileString(String fileName) throws IOException{
