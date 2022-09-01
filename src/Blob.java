@@ -1,6 +1,5 @@
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigInteger;
@@ -13,11 +12,14 @@ public class Blob {
 
 	private String SHA1;
 	
-	public Blob(String fileName) throws FileNotFoundException {
-		SHA1 = encryptThisString(fileName);
+	public Blob(String fileName) throws IOException {
+		SHA1 = encryptThisString(getFileString(fileName));
 		
 		File file = new File(SHA1);	
+		
 		PrintWriter pw = new PrintWriter(file);
+		pw.append(getFileString(fileName));
+		pw.close();
 	}
 	
 	private static String getFileString(String fileName) throws IOException{
