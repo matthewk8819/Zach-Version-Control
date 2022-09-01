@@ -17,12 +17,12 @@ public class Blob {
 		
 		File file = new File(SHA1);	
 		
-		PrintWriter pw = new PrintWriter(file);
+		PrintWriter pw = new PrintWriter("test/objects/"+ file);
 		pw.append(getFileString(fileName));
 		pw.close();
 	}
 	
-	private static String getFileString(String fileName) throws IOException{
+	private  String getFileString(String fileName) throws IOException{
 		Path filePath = Path.of(fileName);
 		
 		return Files.readString(filePath);
