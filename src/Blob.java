@@ -10,24 +10,33 @@ import java.security.NoSuchAlgorithmException;
 
 public class Blob {
 
+	//SHA1 String
 	private String SHA1;
 	
+	//constructor
 	public Blob(String fileName) throws IOException {
+		//creates SHA1 string of contents
 		SHA1 = encryptThisString(getFileString(fileName));
 		
+		//creates new file called SHA1
 		File file = new File(SHA1);	
 		
+		//puts file in objects folder
 		PrintWriter pw = new PrintWriter("test/objects/"+ file);
+		
+		//copies contents into file
 		pw.append(getFileString(fileName));
 		pw.close();
 	}
 	
+	//gets contents of file
 	private  String getFileString(String fileName) throws IOException{
 		Path filePath = Path.of(fileName);
 		
 		return Files.readString(filePath);
 	}
 	
+	//SHA1 method
 	private String encryptThisString(String input)
     {
         try {
