@@ -1,43 +1,32 @@
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
 
 public class Blob {
 
 	//SHA1 String
 	private String SHA1;
-	//zipped file contents
-	private String zipped;
-	
+
 	//constructor
 	public Blob(String fileName) throws Exception {
-		//creates zipped string of contents
-		zipped = (String)compress(getFileString(fileName));
-		
-		//creates SHA1 string of zipped
-		SHA1 = encryptThisString(zipped);
+		//creates SHA1 string of contents
+		SHA1 = encryptThisString(getFileString(fileName));
 		
 		//creates new file called SHA1
 		File file = new File(SHA1);	
 		
 		//puts file in objects folder
-		PrintWriter pw = new PrintWriter("objects/"+ file);
+		FileWriter fw = new FileWriter("objects/"+ file);
 		
 		//copies contents into file
-		pw.append(zipped);
-		pw.close();
+		fw.write(getFileString(fileName));
+		fw.close();
 	}
 	
 	//gets contents of file
@@ -79,18 +68,5 @@ public class Blob {
             throw new RuntimeException(e);
         }
     }
-	
-	//zipping method
-	public static byte[] compress(final String str) throws IOException {
-	    if ((str == null) || (str.length() == 0)) {
-	      return null;
-	    }
-	    ByteArrayOutputStream obj = new ByteArrayOutputStream();
-	    GZIPOutputStream gzip = new GZIPOutputStream(obj);
-	    gzip.write(str.getBytes("UTF-8"));
-	    gzip.flush();
-	    gzip.close();
-	    return obj.toByteArray();
-	  }
 	
 }
