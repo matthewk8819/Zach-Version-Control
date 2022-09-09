@@ -29,6 +29,11 @@ public class Blob {
 		fw.close();
 	}
 	
+	//returns SHA1 hash
+	public String getSHA1() {
+		return SHA1;
+	}
+	
 	//gets contents of file
 	private  String getFileString(String fileName) throws IOException{
 		Path filePath = Path.of(fileName);
