@@ -4,11 +4,14 @@ public class Tester {
 
 	public static void main(String[] args) throws Exception {
 		
-		Index ind = new Index();
-		ind.initiate();
+		Git g = new Git();
+		g.initiate();
 
-		ind.add("something.txt");
-		ind.add("other.txt");
+		g.add("something.txt");
+		g.add("other.txt");
+		
+		//g.remove("something.txt");
+		g.remove("other.txt");
 	}
 
 }
