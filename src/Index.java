@@ -40,7 +40,7 @@ public class Index {
 		PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(temp), charset));
 		for (String line; (line = reader.readLine()) != null;) {
 			line = line.replace(delete, "");
-			writer.println(line);
+			writer.print(line);
 		}
 		reader.close();
 		writer.close();

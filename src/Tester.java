@@ -10,8 +10,8 @@ public class Tester {
 		g.add("something.txt");
 		g.add("other.txt");
 		
-		//g.remove("something.txt");
-		g.remove("other.txt");
+		g.remove("something.txt");
+		//g.remove("other.txt");
 	}
 
 }
