@@ -18,7 +18,8 @@ public class Index {
 	public Index() throws IOException {
 		//initializes index file
 		index = new File("index");
-	}
+		index.createNewFile();	
+		}
 	
 	//creates and adds new blob to index and objects folder
 	public void add(String fileName, Blob blob) throws Exception {
