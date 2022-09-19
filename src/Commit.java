@@ -14,18 +14,36 @@ public class Commit {
 	private Commit next = null;
 	private String pTree = null;
 	private String summary, author, date;
+	private String sha1;
 
 	// constructor
-	public Commit(String fileName, String sum, String auth, Commit p) {
-		parent = p;
+	public Commit(String fileName, String sum, String auth, Commit p) throws IOException {
+		if (!p.equals(null)) {
+			parent = p;
+			writeParent();
+		}
 		author = auth;
 		summary = sum;
 		date = getDate();
 		pTree = "objects/" + fileName;
+		getFileName();
 	}
 
-	// writing method
-	public void writeFile() throws IOException {
+	// method of reading in from parent
+	// also changes second line to this location
+	// writes back out to parent file
+	private void writeParent() throws IOException {
+		parent.setChild(this);
+		parent.writeFile();
+	}
+
+	// set next
+	public void setChild(Commit child) {
+		next = child;
+	}
+
+	// getsFileName
+	private void getFileName() {
 		String str = "";
 		ArrayList<String> arr = getContents();
 		for (String s : arr) {
@@ -33,7 +51,12 @@ public class Commit {
 				str += s;
 			}
 		}
-		String sha1 = encryptThisString(str);
+		sha1 = encryptThisString(str);
+	}
+
+	// writing method
+	public void writeFile() throws IOException {
+		ArrayList<String> arr = getContents();
 		File file = new File(sha1);
 
 		FileWriter fw = new FileWriter("objects/" + file);
