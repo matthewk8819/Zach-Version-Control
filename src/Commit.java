@@ -68,6 +68,7 @@ public class Commit {
 		return arr;
 	}
 
+	// gets location of commit
 	public String getLocation() {
 		return pTree;
 	}
