@@ -1,3 +1,4 @@
+package Testers;
 import static org.junit.jupiter.api.Assertions.*;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -8,6 +9,9 @@ import java.nio.file.Paths;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import Git.Blob;
+import Git.Git;
 
 class GitTester {
 

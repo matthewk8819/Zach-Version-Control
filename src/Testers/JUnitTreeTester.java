@@ -1,3 +1,4 @@
+package Testers;
 import static org.junit.Assert.assertTrue;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -8,6 +9,8 @@ import java.util.Scanner;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import Git.Tree;
 
 class JUnitTreeTester {
 	

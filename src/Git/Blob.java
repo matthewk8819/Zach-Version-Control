@@ -1,3 +1,4 @@
+package Git;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -59,10 +60,11 @@ public class Blob {
             // Convert message digest into hex value
             String hashtext = no.toString(16);
  
-            // Add preceding 0s to make it 32 bit
-            while (hashtext.length() < 32) {
-                hashtext = "0" + hashtext;
-            }
+            //why is this needed??
+//            // Add preceding 0s to make it 32 bit
+//            while (hashtext.length() < 32) {
+//                hashtext = "0" + hashtext;
+//            }
  
             // return the HashText
             return hashtext;
