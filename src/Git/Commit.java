@@ -19,10 +19,10 @@ public class Commit {
 
 	// constructor
 	public Commit(String fileName, String sum, String auth, Commit p) throws IOException {
-		if (!p.equals(null)) {
-			parent = p;
-			writeParent();
-		}
+//		if (!p.equals(null)) {
+//			parent = p;
+//			writeParent();
+//		}
 		author = auth;
 		summary = sum;
 		date = getDate();

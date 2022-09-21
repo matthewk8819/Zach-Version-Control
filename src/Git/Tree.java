@@ -16,7 +16,7 @@ public class Tree {
 	public Tree (ArrayList<String> pairs) {
 		output="";
 		for (String pair: pairs) {
-			output+=pair+"\n";
+			output+=pair+ "ig this would be the file name huh.txt" + "\n";
 		}
 		sha1 = generateSha1(output);
 		Path p = Paths.get("objects"+File.separator+sha1);
